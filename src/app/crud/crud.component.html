@@ -1,0 +1,107 @@
+<p>crud works!</p>
+<div class="page-content">
+    <div class="container">
+        <h4>CRUD WITH Firebase ...</h4>
+        <div class="row">
+            <form [formGroup]="userData" (ngSubmit)="Submit()">
+                <div class="col-md-6 mb-2">
+
+                    <input type="text" formControlName="firstName" class="form-control  mb-2"
+                        placeholder="Enter First Name"
+                        [ngClass]="{ 'is-invalid': submitted && userData.controls['firstName'].errors }">
+
+                    <input type="text" formControlName="lastName" class="form-control mb-2"
+                        placeholder="Enter Last Name"
+                        [ngClass]="{ 'is-invalid': submitted && userData.controls['email'].errors }">
+
+                    <input type="email" formControlName="email" class="form-control  mb-2" placeholder="Enter Email"
+                        [ngClass]="{ 'is-invalid': submitted && userData.controls['email'].errors }">
+
+
+                    <input type="date" formControlName="dob" class="form-control  mb-2"
+                        [ngClass]="{ 'is-invalid': submitted && userData.controls['dob'].errors }">
+
+                    <div *ngFor="let opt of options">
+                        <input type="radio" formControlName="gender" [value]="opt.key" class="form-check-input"
+                            [ngClass]="{ 'is-invalid': submitted && userData.controls['gender'].errors }" />
+                        {{ opt.value }}&nbsp;
+                    </div>
+
+                    <input type="number" placeholder="Mobile" formControlName="mobile" class="form-control  mb-2"
+                        [ngClass]="{ 'is-invalid': submitted && userData.controls['mobile'].errors }">
+
+
+                    <textarea placeholder="Address" class="form-control mb-2" formControlName="address"
+                        [ngClass]="{ 'is-invalid': submitted && userData.controls['dob'].errors }">
+                    </textarea>
+
+                    <input type="text" placeholder="City" formControlName="city" class="form-control  mb-2"
+                        [ngClass]="{ 'is-invalid': submitted && userData.controls['city'].errors }">
+
+                    <input type="text" placeholder="State" formControlName="state" class="form-control  mb-2"
+                        [ngClass]="{ 'is-invalid': submitted && userData.controls['state'].errors }">
+
+                    <input type="text" placeholder="Country" formControlName="country" class="form-control  mb-2"
+                        [ngClass]="{ 'is-invalid': submitted && userData.controls['country'].errors }">
+
+                </div>
+
+                <button class="btn btn-primary mb-4" *ngIf="!isEdit" type="submit"> Submit
+                    <i class="bi bi-google"></i></button>
+
+                <button class="btn btn-secondary mb-4" *ngIf="isEdit" type="submit"> Update
+                    <i class="bi bi-google"></i></button>&nbsp;
+
+                <button *ngIf="isEdit" class="btn btn-success mb-4" (click)="resetForm()">
+                    <i class="bi bi-backspace-fill"></i> Back
+                </button>
+            </form>
+        </div>
+        <table class="table table-hover">
+            <thead>
+                <tr class="text-center">
+                    <th scope="col">#</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">DOB</th>
+                    <th scope="col">Gender</th>
+                    <th scope="col">Mobile</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">City</th>
+                    <th scope="col">State</th>
+                    <th scope="col">Country</th>
+                    <th scope="col">Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of userList | async let i = index" class="mb-4 text-center">
+                    <td>{{i + 1}}</td>
+                    <td>{{item.firstName}}</td>
+                    <td>{{item.lastName}}</td>
+                    <td>{{item.email}}</td>
+                    <td>{{item.dob}}</td>
+                    <td>{{item.gender}}</td>
+                    <td>{{item.mobile}}</td>
+                    <td>{{item.address}}</td>
+                    <td>{{item.city}}</td>
+                    <td>{{item.state}}</td>
+                    <td>{{item.country}}</td>
+                    <td>
+                        <button class=" btn btn-outline-secondary" (click)="action('edit',item.id,item)">
+                            <i class="bi bi-pencil-square"></i></button>&nbsp;
+                        <button class="btn btn-outline-danger" (click)="action('delete',item.id,item)">
+                            <i class="bi bi-trash"></i></button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="d-flex justify-content-center">
+            <div class="spinner-border text-primary" role="status" *ngIf="isLoading">
+                <span class="visually-hidden">Loading...</span>
+            </div>
+        </div>
+
+    </div>
+</div>

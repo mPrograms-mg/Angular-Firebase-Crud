@@ -1,1 +1,31 @@
 /* You can add global styles to this file, and also import other style files */
+/* You can add global styles to this file, and also import other style files */
+@import "../node_modules/bootstrap/scss/bootstrap.scss";
+@import "../node_modules/bootstrap-icons/font/bootstrap-icons.scss";
+
+html,
+body {
+  height: 100%;
+}
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif !important;
+  font-size: 0.925rem !important;
+  font-weight: 400;
+  line-height: 1.5;
+  color: #062642 !important;
+  text-align: left;
+  background-color: #f7f8f9;
+}
+.page-content {
+  padding: 100px 0 50px 0;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-weight: 600;
+  color: #0d233e;
+}

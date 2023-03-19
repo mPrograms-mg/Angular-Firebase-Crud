@@ -48,6 +48,7 @@
                   "maximumError": "4kb"
                 }
               ],
+              
               "outputHashing": "all"
             },
             "development": {
@@ -97,8 +98,21 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "prerender": false,
+            "ssr": false,
+            "browserTarget": "AngularFire-CRUD:build:production",
+            "firebaseProject": "angular-firebase-crud-ee53f",
+            "firebaseHostingSite": "angular-firebase-crud-ee53f"
+          }
         }
       }
     }
+  },
+  "cli": {
+    "analytics": false
   }
 }

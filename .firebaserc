@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "angular-firebase-crud-ee53f": {
+      "hosting": {
+        "AngularFire-CRUD": [
+          "angular-firebase-crud-ee53f"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "angular-firebase-crud-ee53f"
+  }
+}
